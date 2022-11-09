@@ -12,8 +12,6 @@ class Dashboard extends BaseController
             'title' => 'Dashboard Admin'
         ];
 
-        echo view('layout/header', $data);
-        echo view('admin/home', $data);
-        echo view('layout/header');
+        return view('admin/home', $data);
     }
 }

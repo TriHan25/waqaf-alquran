@@ -1,33 +1,45 @@
-   <!-- Custom scripts for all pages-->
-   <script src="js/sb-admin-2.min.js"></script>
+             <!-- /.container-fluid -->
+             </div>
+             <!-- End of Main Content -->
 
-   <!-- Optional JavaScript; choose one of the two! -->
+             <!-- Footer -->
+             <footer class="sticky-footer bg-white">
+                 <div class="container my-auto">
+                     <div class="copyright text-center my-auto">
+                         <span>Copyright &copy; Your Website 2021</span>
+                     </div>
+                 </div>
+             </footer>
+             <!-- End of Footer -->
+             </div>
+             <!-- End of Content Wrapper -->
+             </div>
+             <!-- End of Page Wrapper -->
 
-   <!-- Option 1: Bootstrap Bundle with Popper -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+             <!-- Scroll to Top Button-->
+             <a class="scroll-to-top rounded" href="#page-top">
+                 <i class="fas fa-angle-up"></i>
+             </a>
 
-   <!-- Option 2: Separate Popper and Bootstrap JS -->
-   <!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
--->
-
-   <script>
-       function previewImg() {
-           const sampul = document.querySelector('#sampul');
-           const sampulLabel = document.querySelector('.input-group-text');
-           const imgPreview = document.querySelector('.img-preview');
-
-           sampulLabel.textContent = sampul.files[0].name;
-
-           const fileSampul = new FileReader();
-           fileSampul.readAsDataURL(sampul.files[0]);
-
-           fileSampul.onload = function(e) {
-               imgPreview.src = e.target.result;
-           }
-       }
-   </script>
-   </body>
-
-   </html>
+             <!-- Logout Modal-->
+             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">×</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             Select "Logout" below if you are ready to end your current session.
+                         </div>
+                         <div class="modal-footer">
+                             <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                                 Cancel
+                             </button>
+                             <a class="btn btn-primary" href="login.html">Logout</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>

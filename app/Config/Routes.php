@@ -37,6 +37,19 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Admin\Dashboard::index');
 
+// Home Produk
+$routes->get('/produk', 'Admin\DataProduk::index');
+// Create
+$routes->get('/produk/create', 'Admin\DataProduk::create');
+$routes->post('/produk/save', 'Admin\DataProduk::save');
+// Edit
+$routes->get('/produk/edit/(:segment)', 'Admin\DataProduk::edit/$1');
+$routes->post('/produk/update/(:num)', 'Admin\DataProduk::update/$1');
+// Detail
+$routes->get('/produk/detail/(:segment)', 'Admin\DataProduk::detail/$1');
+// Delete
+$routes->delete('/produk/(:num)', 'Admin\DataProduk::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

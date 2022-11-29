@@ -28,15 +28,10 @@
 
 <body id="page-top">
 
-    <?= $this->include('layout/navbarAdmin'); ?>
+    <?= $this->include('layout/navbar'); ?>
 
-    <!-- Dashboard -->
-    <?= $this->renderSection('home'); ?>
-    <!-- Data Produk -->
-    <?= $this->renderSection('produk'); ?>
-    <?= $this->renderSection('add-produk'); ?>
-
-
+    <!-- User Pager -->
+    <?= $this->renderSection('content'); ?>
 
     <!-- /.container-fluid -->
     </div>

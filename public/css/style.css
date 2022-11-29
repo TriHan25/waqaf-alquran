@@ -1,0 +1,26 @@
+/* .produk {
+  padding-bottom: 2rem;
+}
+.card {
+  max-width: 18rem;
+  min-width: 10rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .produk {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .card {
+    margin: auto;
+  }
+  .produk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+} */

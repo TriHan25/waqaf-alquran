@@ -35,8 +35,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Admin\Dashboard::index');
 
+// User
+$routes->get('/', 'Home::index');
+
+// Admin
+$routes->get('/admin', 'Admin\Dashboard::index');
+
+//region Produk
 // Home Produk
 $routes->get('/produk', 'Admin\DataProduk::index');
 // Create
@@ -49,6 +55,19 @@ $routes->post('/produk/update/(:num)', 'Admin\DataProduk::update/$1');
 $routes->get('/produk/detail/(:segment)', 'Admin\DataProduk::detail/$1');
 // Delete
 $routes->delete('/produk/(:num)', 'Admin\DataProduk::delete/$1');
+//endregion
+
+//region Orderan
+// Home Orderan
+$routes->get('/orderan', 'Admin\Orderan::index');
+// create
+$routes->get('/orderan/create', 'Admin\Orderan::create');
+$routes->post('/orderan/konfirmasi', 'Admin\Orderan::konfirmasi');
+$routes->post('/orderan/save', 'Admin\Orderan::save');
+
+
+
+//endregion 
 
 /*
  * --------------------------------------------------------------------

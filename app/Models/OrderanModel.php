@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class OrderanModel extends Model
+{
+    protected $table      = 'orderan';
+    protected $useTimestamps = true;
+    protected $allowedFields = ['no_orderan', 'nama_pemesan', 'nomor_pemesan', 'status_pengerjaan', 'status_pembayaran', 'total_harga'];
+
+
+    public function getOrderan($pengerjaan = false)
+    {
+        if ($pengerjaan == false) {
+            if ($this->findAll() === null) {
+                return false;
+            }
+            return $this->findAll();
+        }
+
+        return $this->where(['status_pengerjaan' => $pengerjaan])->findAll();
+    }
+}

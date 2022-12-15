@@ -28,4 +28,13 @@ class ProdukModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function getId($id = false)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['id' => $id])->first();
+    }
 }

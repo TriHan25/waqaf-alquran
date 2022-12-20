@@ -64,6 +64,10 @@ $routes->get('/orderan', 'Admin\Orderan::index');
 $routes->get('/orderan/create', 'Admin\Orderan::create');
 $routes->post('/orderan/konfirmasi', 'Admin\Orderan::konfirmasi');
 $routes->post('/orderan/save', 'Admin\Orderan::save');
+// Detail
+$routes->get('/orderan/detail/(:segment)', 'Admin\Orderan::detail/$1');
+// Delete
+$routes->delete('/orderan/(:num)', 'Admin\Orderan::delete/$1');
 
 
 

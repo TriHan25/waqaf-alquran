@@ -3,7 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-
+use App\Database\Migrations\Produk;
 use App\Models\OrderanModel;
 use App\Models\ProdukModel;
 use App\Models\ProdukOrderanModel;
@@ -59,6 +59,51 @@ class Orderan extends BaseController
         $konfirmasi = $this->request->getVar();
         d($konfirmasi);
 
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required[orderan.nama]',
+                'errors' => [
+                    'required' => '{field} pemesan harus diisi'
+                ]
+            ],
+            'nomor' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} telepon harus diisi'
+                ]
+            ],
+            'status_p' => [
+                'rules' => "required",
+                'errors' => [
+                    'required' => '{field} status harus diisi'
+                ]
+            ],
+            'status_b' => [
+                'rules' => "required",
+                'errors' => [
+                    'required' => 'status bayar harus diisi'
+                ]
+            ],
+            'pilihan' => [
+                'rules' => "required",
+                'errors' => [
+                    'required' => '{field} pilihan harus diisi'
+                ]
+            ],
+            'jumlah' => [
+                'rules' => "required",
+                'errors' => [
+                    'required' => '{field} jumlah harus diisi'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // session()->setFlashdata('not_validate', 'Judul harus unik dan field tidak boleh kosong');
+            // return redirect()->to('/produk/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/orderan/create')->withInput();
+        }
+
+
         // Total Harga
         $id_produk = $konfirmasi['pilihan'];
         $harga = (int)'';
@@ -80,51 +125,6 @@ class Orderan extends BaseController
 
         d($harga);
         d($nama_produk);
-
-
-        if (!$this->validate([
-            'nama' => [
-                'rules' => 'required[orderan.nama]',
-                'errors' => [
-                    'required' => '{field} orderan harus diisi'
-                ]
-            ],
-            'nomor' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} nomor harus diisi'
-                ]
-            ],
-            'status_p' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} status harus diisi'
-                ]
-            ],
-            'status_b' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} status harus diisi'
-                ]
-            ],
-            'pilihan' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} pilihan harus diisi'
-                ]
-            ],
-            'jumlah' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} jumlah harus diisi'
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            // session()->setFlashdata('not_validate', 'Judul harus unik dan field tidak boleh kosong');
-            // return redirect()->to('/produk/create')->withInput()->with('validation', $validation);
-            return redirect()->to('/orderan/create')->withInput();
-        }
 
         if ($konfirmasi === null) {
             $data = [
@@ -179,17 +179,9 @@ class Orderan extends BaseController
 
     public function delete($id)
     {
-        // cari gambar berdaasar id
-        $namaProduk = $this->produkModel->find($id);
-        // cek gambar default
-        if ($namaProduk['img'] != 'default.png') {
-            // hapus gambar
-            unlink('img/' . $namaProduk['img']);
-        }
-
-        $this->produkModel->delete($id);
+        $this->orderanModel->delete($id);
         session()->setFlashdata('delete', 'data berhasil dihapus');
-        return redirect()->to('/produk');
+        return redirect()->to('/orderan');
     }
 
     public function edit($slug)
@@ -286,16 +278,20 @@ class Orderan extends BaseController
         return redirect()->to('/produk');
     }
 
-    public function detail($slug)
+    public function detail($no_orderan)
     {
+        $produk = $this->produkOrderanModel->getJoinPO($no_orderan);
+        $orderan = $this->orderanModel->getNo($no_orderan);
+
         $data = [
             'title' => 'Detail Produk',
             'validation' => \Config\Services::validation(),
-            'produk' => $this->produkModel->getSlug($slug)
+            'orderan' => $orderan,
+            'produk' => $produk
         ];
 
         // dd($data);
 
-        return view('admin/detailProduk', $data);
+        return view('admin/detailOrderan', $data);
     }
 }

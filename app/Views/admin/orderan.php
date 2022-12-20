@@ -43,6 +43,7 @@
                                 <th scope="col">Status Pengerjaan</th>
                                 <th scope="col">Status Pembayaran</th>
                                 <th scope="col">Total Harga</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,10 +64,11 @@
                                         } elseif ($o['status_pembayaran'] == 3) {
                                             echo 'Belum Bayar';
                                         } ?></td>
-                                    <td><?= $o['total_harga']; ?></td>
-                                    <td><a class="btn btn-success" href="/produk/detail/<?= $o['no_orderan']; ?>">Detail</a>
-                                        <a class="btn btn-warning" href="/produk/edit/<?= $o['no_orderan']; ?>"><i class="fas fa-edit"></i></a>
-                                        <form action="/produk/<?= $o['id']; ?>" method="post" class="d-inline">
+                                    <td>Rp <?= number_format($o['total_harga'], 0, ',', '.'); ?></td>
+                                    <td><a class="btn btn-success" href="/orderan/detail/<?= $o['no_orderan']; ?>">Detail</a>
+                                        <a class="btn btn-warning" href="/orderan/edit/<?= $o['no_orderan']; ?>"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-info"><i class="fa-solid fa-print"></i></a>
+                                        <form action="/orderan/<?= $o['id']; ?>" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin')"><i class="fa-solid fa-trash"></i></button>

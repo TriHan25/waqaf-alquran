@@ -162,7 +162,7 @@
                     </div>
                 </div>
 
-                <a href="/produk" class="btn btn-danger mr-2">Kembali</a>
+                <a href="/orderan" class="btn btn-danger mr-2">Kembali</a>
                 <button type="submit" class="btn btn-primary">Tambah Data</button>
             </form>
         </div>

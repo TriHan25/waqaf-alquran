@@ -22,4 +22,13 @@ class OrderanModel extends Model
 
         return $this->where(['status_pengerjaan' => $pengerjaan])->findAll();
     }
+
+    public function getNo($no_orderan = false)
+    {
+        if ($no_orderan == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['no_orderan' => $no_orderan])->first();
+    }
 }

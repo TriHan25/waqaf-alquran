@@ -1,4 +1,4 @@
-<div class="info container-fluid">
+<div id="info" class="info container-fluid">
     <div class="wrapper-left col-5">
         <div class="top">
             <div class="header-kontak text-center">

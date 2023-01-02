@@ -38,6 +38,7 @@ $routes->setAutoRoute(true);
 
 // User
 $routes->get('/', 'Home::index');
+$routes->get('/Cek_Orderan', 'Resi::index');
 
 // Admin
 $routes->get('/admin', 'Admin\Dashboard::index');
@@ -64,6 +65,10 @@ $routes->get('/orderan', 'Admin\Orderan::index');
 $routes->get('/orderan/create', 'Admin\Orderan::create');
 $routes->post('/orderan/konfirmasi', 'Admin\Orderan::konfirmasi');
 $routes->post('/orderan/save', 'Admin\Orderan::save');
+// Edit
+$routes->get('/orderan/edit/(:segment)', 'Admin\Orderan::edit/$1');
+$routes->post('/orderan/konfirmasi-edit/(:segment)', 'Admin\Orderan::konfirmasi_edit/$1');
+$routes->post('/orderan/update/(:num)', 'Admin\Orderan::update/$1');
 // Detail
 $routes->get('/orderan/detail/(:segment)', 'Admin\Orderan::detail/$1');
 // Delete

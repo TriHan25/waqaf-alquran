@@ -35,7 +35,7 @@
 
     <div id="wrap">
         <!-- Navbar -->
-        <?= $this->include('layout/navbar'); ?>
+
 
         <!-- Content -->
         <?= $this->renderSection('content'); ?>

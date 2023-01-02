@@ -19,6 +19,15 @@ class ProdukOrderanModel extends Model
         return $this->where(['no_orderan' => $no_orderan])->findAll();
     }
 
+    public function getJoinP($no_orderan = false)
+    {
+        if ($no_orderan == false) {
+            return $this->findAll();
+        }
+
+        return $this->select('produk_orderan.id_produk, produk_orderan.jumlah, produk.nama, produk.harga, produk.img')->join('produk', 'produk.id = produk_orderan.id_produk')->join('orderan', 'orderan.no_orderan = produk_orderan.no_orderan')->where(['produk_orderan.no_orderan' => $no_orderan])->findAll();
+    }
+
     public function getJoinPO($no_orderan = false)
     {
         if ($no_orderan == false) {

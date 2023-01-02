@@ -57,7 +57,7 @@ class Orderan extends BaseController
     {
         // session();
         $konfirmasi = $this->request->getVar();
-        d($konfirmasi);
+        // dd($konfirmasi);
 
         if (!$this->validate([
             'nama' => [
@@ -123,9 +123,6 @@ class Orderan extends BaseController
             $nama_produk[] = $nama;
         }
 
-        d($harga);
-        d($nama_produk);
-
         if ($konfirmasi === null) {
             $data = [
                 'title' => 'Form Konfirmasi Orderan',
@@ -149,7 +146,6 @@ class Orderan extends BaseController
     public function save()
     {
         // save ke tabel orderan 
-        dd($this->request->getVar());
         $this->orderanModel->save([
             'no_orderan' => $this->request->getVar('no_orderan'),
             'nama_pemesan' => $this->request->getVar('nama'),
@@ -184,98 +180,143 @@ class Orderan extends BaseController
         return redirect()->to('/orderan');
     }
 
-    public function edit($slug)
+    public function edit($no_orderan)
     {
         $data = [
             'title' => 'Form Ubah Produk',
             'validation' => \Config\Services::validation(),
-            'produk' => $this->produkModel->getSlug($slug)
+            'produk' => $this->produkModel->getProduk(),
+            'orderan' => $this->orderanModel->getNo($no_orderan),
+            'produk_orderan' => $this->produkOrderanModel->getJoinPO($no_orderan)
         ];
 
-        return view('admin/editProduk', $data);
+        d($this->produkModel->getProduk());
+        d($this->orderanModel->getNo($no_orderan));
+        d($this->produkOrderanModel->getJoinPO($no_orderan));
+
+        return view('admin/editOrderan', $data);
+    }
+
+    public function konfirmasi_edit($no_orderan)
+    {
+        // session();
+        $konfirmasi = $this->request->getVar();
+        d($konfirmasi);
+
+        // if (!$this->validate([
+        //     'nama_pemesan' => [
+        //         'rules' => 'required[orderan.nama_pemesan]',
+        //         'errors' => [
+        //             'required' => 'nama pemesan harus diisi'
+        //         ]
+        //     ],
+        //     'nomor_pemesan' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'nomor pemesan harus diisi'
+        //         ]
+        //     ],
+        //     'status_pembayaran' => [
+        //         'rules' => "required",
+        //         'errors' => [
+        //             'required' => 'status pembayaran harus diisi'
+        //         ]
+        //     ],
+        //     'produk[]' => [
+        //         'rules' => "required",
+        //         'errors' => [
+        //             'required' => '{field} harus diisi'
+        //         ]
+        //     ],
+        //     'jumlah[]' => [
+        //         'rules' => "required|integer",
+        //         'errors' => [
+        //             'required' => '{field} harus diisi'
+        //         ]
+        //     ]
+        // ])) {
+        //     // $validation = \Config\Services::validation();
+        //     // session()->setFlashdata('not_validate', 'Judul harus unik dan field tidak boleh kosong');
+        //     // return redirect()->to('/produk/create')->withInput()->with('validation', $validation);
+        //     return redirect()->to('/orderan/edit/' . $no_orderan)->withInput();
+        // }
+
+
+        // Total Harga
+        $id_produk = $konfirmasi['produk'];
+        $harga = (int)'';
+
+        d($id_produk);
+
+        foreach ($id_produk as $k => $i) {
+            $jumlah = $konfirmasi['jumlah'][$k];
+            $get_produk = $this->produkModel->getId($i);
+            $harga_produk = (int)$get_produk['harga'] * $jumlah;
+            $harga += $harga_produk;
+        }
+        d($harga);
+
+
+        // Nama produk pilihan
+        $nama_produk = [];
+        foreach ($id_produk as $k => $i) {
+            $get_produk = $this->produkModel->getId($i);
+            $nama = $get_produk['nama'];
+            $nama_produk[] = $nama;
+        }
+        d($nama_produk);
+
+
+
+        if ($konfirmasi === null) {
+            $data = [
+                'title' => 'Form Konfirmasi Orderan',
+                'konfirmasi' => null,
+                'validation' => \Config\Services::validation(),
+                'produk' => $this->produkModel->getProduk()
+            ];
+        }
+        $data = [
+            'title' => 'Form Konfirmasi Orderan',
+            'konfirmasi' => $konfirmasi,
+            'harga' => $harga,
+            'nama_produk' => $nama_produk,
+            'validation' => \Config\Services::validation(),
+            'produk' => $this->produkModel->getId()
+        ];
+
+        return view('admin/konfirmasiEditOrderan', $data);
     }
 
     public function update($id)
     {
-        $produkLama = $this->produkModel->getSlug($this->request->getVar('slug'));
-        if ($produkLama['nama'] == $this->request->getVar('nama')) {
-            $rule_nama = 'required';
-        } else {
-            $rule_nama = 'required|is_unique[produk.nama]';
-        }
-
-        //validasi input
-        if (!$this->validate([
-            'nama' => [
-                'rules' => $rule_nama,
-                'errors' => [
-                    'required' => '{field} produk harus diisi',
-                    'is_unique' => '{field} produk sudah ada'
-                ]
-            ],
-            'kategori' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} produk harus diisi'
-                ]
-            ],
-            'harga' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} produk harus diisi'
-                ]
-            ],
-            'deskripsi' => [
-                'rules' => "required",
-                'errors' => [
-                    'required' => '{field} produk harus diisi'
-                ]
-            ],
-            'img' => [
-                'rules' => 'max_size[img,2048]|is_image[img]|mime_in[img,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar terlalu besar',
-                    'is_image' => 'File yang anda pilih bukan gambar',
-                    'mime_in' => 'File yang anda pilih bukan gambar'
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            // session()->setFlashdata('not_validate', 'Judul harus unik dan field tidak boleh kosong');
-            // return redirect()->to('/produk/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
-            return redirect()->to('/produk/edit/' . $this->request->getVar('slug'))->withInput();
-        }
-
-        $fileImg = $this->request->getFile('img');
-
-        // cek gambar, apakah gambar lama
-        if ($fileImg->getError() == 4) {
-            $namaImg = $this->request->getVar('imgLama');
-        } else {
-            // generate nama random
-            $namaImg = $fileImg->getRandomName();
-            // pindah file
-            $fileImg->move('img', $namaImg);
-            // hapus file lama
-            unlink('img/' . $this->request->getVar('imgLama'));
-        }
-
-
-
-        $slug = url_title($this->request->getVar('nama'), '-', true);
-
-        $this->produkModel->save([
+        $this->orderanModel->save([
             'id' => $id,
-            'nama' => $this->request->getVar('nama'),
-            'slug' => $slug,
-            'kategori' => $this->request->getVar('kategori'),
-            'harga' => $this->request->getVar('harga'),
-            'img' => $namaImg
+            // 'no_orderan' => $this->request->getVar('no_orderan'),
+            'nama_pemesan' => $this->request->getVar('nama_pemesan'),
+            'nomor_pemesan' => $this->request->getVar('nomor_pemesan'),
+            'status_pembayaran' => $this->request->getVar('status_pembayaran'),
+            'total_harga' => $this->request->getVar('harga'),
         ]);
+
+        // save ke tabel produk orderan 
+        $konfirmasi = $this->request->getVar();
+        $no_orderan = $this->request->getVar('no_orderan');
+        $id_PO = $this->produkOrderanModel->getNo($no_orderan);
+
+        foreach ($id_PO as $k => $i) {
+            $jumlah = $konfirmasi['jumlah'][$k];
+            $this->produkOrderanModel->save([
+                "id" => $i['id'],
+                "no_orderan" => $no_orderan,
+                "id_produk" => $i['id_produk'],
+                "jumlah" => $jumlah
+            ]);
+        }
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah.');
 
-        return redirect()->to('/produk');
+        return redirect()->to('/orderan');
     }
 
     public function detail($no_orderan)

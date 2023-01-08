@@ -41,6 +41,49 @@ class Orderan extends BaseController
         return view('admin/orderan', $data);
     }
 
+    public function filter()
+    {
+        $status_b = $this->request->getVar('status_b');
+        $status_p = $this->request->getVar('status_p');
+
+        if (empty($status_b) && !empty($status_p)) {
+            $data = [
+                'title' => 'Kelola Data Orderan',
+                'orderan' => $this->orderanModel->getStatusP($status_p)
+            ];
+        } elseif (!empty($status_b) && empty($status_p)) {
+            $data = [
+                'title' => 'Kelola Data Orderan',
+                'orderan' => $this->orderanModel->getStatusB($status_b)
+            ];
+        } elseif (!empty($status_b) && !empty($status_p)) {
+            $data = [
+                'title' => 'Kelola Data Orderan',
+                'orderan' => $this->orderanModel->getStatusBP($status_b, $status_p)
+            ];
+        } elseif (empty($status_b) && empty($status_p)) {
+            $data = [
+                'title' => 'Kelola Data Orderan',
+                'orderan' => $this->orderanModel->getOrderan()
+            ];
+        }
+
+        return view('admin/orderanFilter', $data);
+    }
+
+    public function search()
+    {
+        $search = $this->request->getVar('search');
+
+        $data = [
+            'title' => 'Kelola Data Orderan',
+            'orderan' => $this->orderanModel->getSearch($search)
+        ];
+
+
+        return view('admin/orderanFilter', $data);
+    }
+
     public function create()
     {
         // session();

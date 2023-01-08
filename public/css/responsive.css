@@ -1,0 +1,45 @@
+@media only screen and (max-width: 600px) {
+  .text-bg {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* align-content: center; */
+    justify-content: center;
+    color: #edf2f4;
+    text-shadow: 0px 0px 5px #2b2d42;
+  }
+  .text-bg h1 {
+    font-size: 60px;
+    font-weight: bolder;
+  }
+  #produk {
+    padding: 1rem;
+  }
+  #kontak {
+    padding: 1rem;
+  }
+  #customer {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .content-kontak {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-kontak .telepon {
+    margin-bottom: 1rem;
+  }
+  .content-kontak .alamat {
+    margin-bottom: 1rem;
+  }
+  .content-kontak .email {
+    margin-bottom: 1rem;
+  }
+}

@@ -7,5 +7,15 @@
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate
             Report</a>
     </div>
+    <div class="content-wrap">
+        <div class="produk_jum">
+            <h2>Total Jumlah Produk</h2>
+            <p><?= $produk_jum; ?></p>
+        </div>
+        <div class="orderan_jum">
+            <h2>Total Jumlah Orderan</h2>
+            <p><?= $orderan_jum; ?></p>
+        </div>
+    </div>
 </div>
 <?= $this->endSection(); ?>

@@ -1,0 +1,46 @@
+/* #region Dashboard */
+.content-wrap {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.content-wrap div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 15px;
+  color: #fff;
+  margin: 5px;
+}
+.content-wrap .produk_jum {
+  background-color: #198754;
+}
+.content-wrap .orderan_jum {
+  background-color: #fd7e14;
+}
+.content-wrap div h2 {
+  font-size: 20px;
+}
+.content-wrap div p {
+  font-size: 20px;
+  font-weight: bold;
+}
+/* #endregion */
+
+/* #region Orderan */
+.top-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+  align-items: center;
+}
+.top-data .form-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+}
+/* #endregion */

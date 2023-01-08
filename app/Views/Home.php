@@ -12,10 +12,11 @@
     </div>
 </div>
 <div class="container">
-    <div id="produk" class="content mt-5 mb-5">
 
+    <div id="produk" class="content mt-5 mb-5">
         <div class="col title-produk text-center">
-            <h1 id="text-margin"><b>Produk</b></h1>
+            <h1 id="text-margin"><b>Produk</b> Waqaf Alquran</h1>
+            <span></span>
         </div>
         <!-- <div class="col navbar-produk text-center">
             <h5 id="text-margin">Cari Produk</h5>
@@ -36,25 +37,67 @@
         </div>
     </div>
 
+    <div class="customer" id="customer">
+        <div class="title-customer text-center">
+            <span></span>
+            <h1><b>Customer</b> Waqaf Alquran</h1>
+        </div>
+        <div class="content-customer col-12">
+            <div class="sesa ">
+                <img src="/img/customer/sesa.png" alt="">
+            </div>
+            <div class="dropeyz ">
+                <img src="/img/customer/dropezy.png" alt="">
+            </div>
+            <div class="astra mb-5">
+                <img src="/img/customer/asuransi_astra.png" alt="">
+            </div>
+            <div class="hnc ">
+                <img src="/img/customer/hnc.png" alt="">
+            </div>
+        </div>
+    </div>
+
     <div class="kontak" id="kontak">
         <div class="title-kontak text-center">
-            <h1><b>Kontak</b></h1>
+            <h1><b>Kontak</b> Waqaf Alquran</h1>
+            <span></span>
         </div>
         <div class="content-kontak col-12">
-            <div class="telepon col-4">
-                <i class="fa-solid fa-phone fa-2xl"></i>
+            <div class="telepon ">
+                <div>
+                    <i class="fa-solid fa-phone fa-2xl"></i>
+                </div>
                 <h3>Telepon</h3>
                 <p>081245671290</p>
             </div>
-            <div class="alamat col-4">
-                <i class="fa-solid fa-location-dot fa-2xl"></i>
+            <div class="alamat ">
+                <div>
+                    <i class="fa-solid fa-location-dot fa-2xl"></i>
+                </div>
                 <h3>Alamat</h3>
                 <p>Kp.Gedong, RT.02/RW.20 No.11, Kec.Beji, Kota Depok</p>
             </div>
-            <div class="email col-4">
-                <i class="fa-solid fa-envelope fa-2xl"></i>
+            <div class="email ">
+                <div>
+                    <i class="fa-solid fa-envelope fa-2xl"></i>
+                </div>
                 <h3>Email</h3>
                 <p>waqaf@gmail.com</p>
+            </div>
+        </div>
+        <div class="content-kontak2 col-12">
+            <div class="shopee">
+                <img src="/img/logo/logo_shopee.png" alt="shopee">
+            </div>
+            <div class="whatsapp">
+                <img src="/img/logo/logo_wa.png" alt="wa">
+            </div>
+            <div class="tiktok">
+                <img src="/img/logo/logo_tik.png" alt="tiktok">
+            </div>
+            <div class="instagram">
+                <img src="/img/logo/logo_instagram.png" alt="ig">
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@
 
          <!-- Nav Item - Dashboard -->
          <li class="nav-item active">
-             <a class="nav-link" href="/">
+             <a class="nav-link" href="/dashboard">
                  <i class="fas fa-fw fa-tachometer-alt"></i>
                  <span>Dashboard</span></a>
          </li>
@@ -43,6 +43,12 @@
              <a class="nav-link" href="/orderan">
                  <i class="fa-sharp fa-solid fa-shop"></i>
                  <span>Orderan</span>
+             </a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="/orderan">
+                 <i class="fas fa-sign-out"></i>
+                 <span>Logout</span>
              </a>
          </li>
 

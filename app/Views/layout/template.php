@@ -22,6 +22,11 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="/font/fonts.css">
 
     <title><?= $title; ?></title>
 </head>

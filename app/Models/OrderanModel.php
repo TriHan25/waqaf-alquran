@@ -31,4 +31,40 @@ class OrderanModel extends Model
 
         return $this->where(['no_orderan' => $no_orderan])->first();
     }
+
+    public function getStatusB($status = false)
+    {
+        if ($status == false) {
+            return false;
+        }
+
+        return $this->where(['status_pembayaran' => $status])->findAll();
+    }
+
+    public function getStatusP($status = false)
+    {
+        if ($status == false) {
+            return false;
+        }
+
+        return $this->where(['status_pengerjaan' => $status])->findAll();
+    }
+
+    public function getStatusBP($statusB = false, $statusP = false)
+    {
+        if ($statusB == false && $statusP == false) {
+            return false;
+        }
+
+        return $this->where(['status_pengerjaan' => $statusP, 'status_pembayaran' => $statusB])->findAll();
+    }
+
+    public function getSearch($search = false)
+    {
+        if ($search == false) {
+            return false;
+        }
+
+        return $this->like(['no_orderan' => $search])->findAll();
+    }
 }

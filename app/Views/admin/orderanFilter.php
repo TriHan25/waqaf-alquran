@@ -28,6 +28,7 @@
                 <?= csrf_field(); ?>
                 <div class="dropdown">
                     <select class="form-select bg-info shadow-sm text-white" id="status_b" name="status_b" value="">
+
                         <option selected disabled value="">Status Pembayaran</option>
                         <option value="2">Lunas</option>
                         <option value="3">Belum Bayar</option>
@@ -58,7 +59,7 @@
 
         <div class="row">
             <div class="col produk">
-                <?php if ($orderan == null) { ?>
+                <?php if ($orderan == false) { ?>
                     <div>
                         <h1>Data Kosong</h1>
                     </div>

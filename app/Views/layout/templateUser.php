@@ -26,6 +26,10 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/font/fonts.css">
     <!-- <link rel="stylesheet" href="/css/font.css"> -->
 
     <title><?= $title; ?></title>
@@ -41,7 +45,6 @@
         <?= $this->renderSection('content'); ?>
 
         <!-- Info -->
-        <?= $this->include('layout/info'); ?>
 
         <!-- Footer -->
         <footer class="sticky-footer text-dark">

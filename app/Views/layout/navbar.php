@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-        <img src="/img/logo2.png" alt="logo">
+        <img src="/img/logo/logo7.png" alt="logo">
         <!-- <a id="color-text-navbar" class="navbar-brand" href="#">Waqaf Alquran</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
@@ -11,9 +11,15 @@
                     <a id="color-text-navbar" class="nav-link active" aria-current="page" href="#produk">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a id="color-text-navbar" class="nav-link active" aria-current="page" href="Cek_Orderan/">Cek Orderan</a>
+                    <a id="color-text-navbar" class="nav-link active" aria-current="page" href="#customer">Customer</a>
                 </li>
                 <li class="nav-item">
+                    <a id="color-text-navbar" class="nav-link active" aria-current="page" href="#kontak">Kontak</a>
+                </li>
+                <li class="nav-item">
+                    <a id="color-text-navbar" class="nav-link active" aria-current="page" href="Cek_Orderan/">Cek Orderan</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a id="color-text-navbar" class="nav-link" href="#spesifikasi">Spesifikasi</a>
                 </li>
                 <li class="nav-item">
@@ -37,7 +43,7 @@
                 </li>
                 <li class="nav-item">
                     <a id="color-text-navbar" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                </li> -->
             </ul>
             <!-- <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -43,3 +43,30 @@
     margin-bottom: 1rem;
   }
 }
+
+/* @media only screen and (max-width: 500px) {
+  .resi {
+    padding: 1rem;
+  }
+  .table-cek-resi {
+    display: none;
+  }
+  .table-cek-resi2 {
+    display: block;
+  }
+} */
+
+/* @media only screen and (max-width: 280px) {
+  .resi {
+    padding: 1rem;
+  }
+  .table-cek-resi {
+    display: none;
+  }
+  .table-cek-resi2 {
+    display: block;
+  }
+  .no1 {
+    display: none;
+  }
+} */

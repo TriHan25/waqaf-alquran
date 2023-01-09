@@ -8,7 +8,7 @@ use App\Models\OrderanModel;
 class Resi extends BaseController
 {
     protected $poModel;
-    protected $ordeeranModel;
+    protected $orderanModel;
     public function __construct()
     {
         $this->poModel = new ProdukOrderanModel();
@@ -17,11 +17,20 @@ class Resi extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getVar('page_orderan') ? $this->request->getVar('page_orderan') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $orderan = $this->orderanModel->search($keyword);
+        } else {
+            $orderan = $this->orderanModel;
+        }
         $data = [
             'title' => "Waqaf Alquran",
-            'produk2' => $this->poModel->paginate(2),
-            'resi' => $this->orderanModel->getOrderan(),
-            'pager' => $this->poModel->pager
+            'orderan' => $orderan->paginate(2, 'orderan'),
+            // 'resi' => $this->orderanModel->getOrderan(),
+            'pager' => $this->orderanModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('pages/resi', $data);

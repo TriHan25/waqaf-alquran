@@ -67,4 +67,13 @@ class OrderanModel extends Model
 
         return $this->like(['no_orderan' => $search])->findAll();
     }
+
+    public function search($search = false)
+    {
+        if ($search == false) {
+            return false;
+        }
+
+        return $this->table('orderan')->like(['no_orderan' => $search]);
+    }
 }

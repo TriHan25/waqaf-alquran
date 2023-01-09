@@ -62,7 +62,7 @@ $routes->delete('/produk/(:num)', 'Admin\DataProduk::delete/$1');
 //region Orderan
 // Home Orderan
 $routes->get('/orderan', 'Admin\Orderan::index');
-$routes->get('/orderan/filter', 'Admin\Orderan::filter');
+$routes->post('/orderan/filter', 'Admin\Orderan::filter');
 $routes->post('/orderan/search', 'Admin\Orderan::search');
 // create
 $routes->get('/orderan/create', 'Admin\Orderan::create');

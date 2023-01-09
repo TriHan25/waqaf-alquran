@@ -15,6 +15,7 @@ body {
   background-image: url("/img/banner/body.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 #wrap {
@@ -452,6 +453,35 @@ body {
 .content-rekening {
   padding: 1rem;
   background-color: #f7f7f7;
+}
+/* #endregion */
+
+/* #region cek resi */
+.resi {
+  background-color: #ffffff;
+  padding: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px 1px #888888;
+}
+.resi .search-resi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.search-box {
+  width: 200px;
+}
+.table-section {
+  overflow-x: auto;
+}
+.table-cek-resi2 {
+  display: none;
+}
+.pagination {
+  flex-wrap: wrap;
 }
 /* #endregion */
 

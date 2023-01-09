@@ -24,7 +24,7 @@
                 <a href="/orderan/create" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fa-solid fa-plus"></i> Add Orderan</a>
             </div>
 
-            <form action="/orderan/filter" method="GET" class="form-filter border">
+            <form action="/orderan/filter" method="post" class="form-filter">
                 <?= csrf_field(); ?>
                 <div class="dropdown">
                     <select class="form-select bg-info shadow-sm text-white" id="status_b" name="status_b" value="">
